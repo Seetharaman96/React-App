@@ -25,9 +25,9 @@ export function MovieDetailsPage() {
         height="650px"
         src={movie.trailer}
         title={movie.name}
-        // frameborder="0"
+        frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        // allowfullscreen
+        allowfullscreen
       ></iframe>
       <div className="movie-information">
         <div className="name-rating">
