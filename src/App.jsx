@@ -21,7 +21,7 @@ import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 // import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import { AddMovie } from "./AddMovie";
-import { BasicForm } from "./BasicForm";
+// import { BasicForm } from "./BasicForm";
 import { EditMovie } from "./EditMovie";
 
 function App() {
@@ -93,14 +93,14 @@ function App() {
               >
                 Bio
               </Button>
-              <Button
+              {/* <Button
                 onClick={() => {
                   navigate("/basicform");
                 }}
                 color="inherit"
               >
                 Basic form
-              </Button>
+              </Button> */}
               <Button
                 sx={{ marginLeft: "auto" }}
                 onClick={() => {
@@ -125,7 +125,7 @@ function App() {
             <Route path="/tic-tac-toe" element={<TicTacToe />} />
             <Route path="/movies/add" element={<AddMovie />} />
             <Route path="/msgtwo" element={<Msgtwo />} />
-            <Route path="/basicform" element={<BasicForm />} />
+            {/* <Route path="/basicform" element={<BasicForm />} /> */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
