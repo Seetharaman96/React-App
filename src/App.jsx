@@ -23,7 +23,10 @@ import Brightness7Icon from "@mui/icons-material/Brightness7";
 import { AddMovie } from "./AddMovie";
 import { BasicForm } from "./BasicForm";
 import { EditMovie } from "./EditMovie";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+let queryClient = new QueryClient();
 function App() {
   // let [movies] = useState([]);
 
@@ -40,97 +43,103 @@ function App() {
   };
 
   return (
-    <ThemeProvider theme={darkTheme}>
-      <Paper sx={backgroundStyles} elevation={4}>
-        <div className="App">
-          <AppBar position="static">
-            <Toolbar>
-              <Button
-                onClick={() => {
-                  navigate("/");
-                }}
-                color="inherit"
-              >
-                Home
-              </Button>
-              <Button
-                onClick={() => {
-                  navigate("/movies");
-                }}
-                color="inherit"
-              >
-                Movies
-              </Button>
-              <Button
-                onClick={() => {
-                  navigate("/movies/add");
-                }}
-                color="inherit"
-              >
-                Add Movie
-              </Button>
-              <Button
-                onClick={() => {
-                  navigate("/color-game");
-                }}
-                color="inherit"
-              >
-                Color Game
-              </Button>
-              <Button
-                onClick={() => {
-                  navigate("/tic-tac-toe");
-                }}
-                color="inherit"
-              >
-                Tic Tac Toe Game
-              </Button>
-              <Button
-                onClick={() => {
-                  navigate("/msgtwo");
-                }}
-                color="inherit"
-              >
-                Bio
-              </Button>
-              <Button
-                onClick={() => {
-                  navigate("/basicform");
-                }}
-                color="inherit"
-              >
-                Basic form
-              </Button>
-              <Button
-                sx={{ marginLeft: "auto" }}
-                onClick={() => {
-                  setMode(mode === "light" ? "dark" : "light");
-                }}
-                color="inherit"
-                startIcon={
-                  mode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />
-                }
-              >
-                {mode === "light" ? "Dark" : "Light"}Mode
-              </Button>
-            </Toolbar>
-          </AppBar>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/films" element={<Navigate replace to="/movies" />} />
-            <Route path="/movies" element={<MovieList />} />
-            <Route path="/movies/:id" element={<MovieDetailsPage />} />
-            <Route path="/movies/edit/:id" element={<EditMovie />} />
-            <Route path="/color-game" element={<ColorGame />} />
-            <Route path="/tic-tac-toe" element={<TicTacToe />} />
-            <Route path="/movies/add" element={<AddMovie />} />
-            <Route path="/msgtwo" element={<Msgtwo />} />
-            <Route path="/basicform" element={<BasicForm />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </div>
-      </Paper>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={true} />
+      <ThemeProvider theme={darkTheme}>
+        <Paper sx={backgroundStyles} elevation={4}>
+          <div className="App">
+            <AppBar position="static">
+              <Toolbar>
+                <Button
+                  onClick={() => {
+                    navigate("/");
+                  }}
+                  color="inherit"
+                >
+                  Home
+                </Button>
+                <Button
+                  onClick={() => {
+                    navigate("/movies");
+                  }}
+                  color="inherit"
+                >
+                  Movies
+                </Button>
+                <Button
+                  onClick={() => {
+                    navigate("/movies/add");
+                  }}
+                  color="inherit"
+                >
+                  Add Movie
+                </Button>
+                <Button
+                  onClick={() => {
+                    navigate("/color-game");
+                  }}
+                  color="inherit"
+                >
+                  Color Game
+                </Button>
+                <Button
+                  onClick={() => {
+                    navigate("/tic-tac-toe");
+                  }}
+                  color="inherit"
+                >
+                  Tic Tac Toe Game
+                </Button>
+                <Button
+                  onClick={() => {
+                    navigate("/msgtwo");
+                  }}
+                  color="inherit"
+                >
+                  Bio
+                </Button>
+                <Button
+                  onClick={() => {
+                    navigate("/basicform");
+                  }}
+                  color="inherit"
+                >
+                  Basic form
+                </Button>
+                <Button
+                  sx={{ marginLeft: "auto" }}
+                  onClick={() => {
+                    setMode(mode === "light" ? "dark" : "light");
+                  }}
+                  color="inherit"
+                  startIcon={
+                    mode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />
+                  }
+                >
+                  {mode === "light" ? "Dark" : "Light"}Mode
+                </Button>
+              </Toolbar>
+            </AppBar>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route
+                path="/films"
+                element={<Navigate replace to="/movies" />}
+              />
+              <Route path="/movies" element={<MovieList />} />
+              <Route path="/movies/:id" element={<MovieDetailsPage />} />
+              <Route path="/movies/edit/:id" element={<EditMovie />} />
+              <Route path="/color-game" element={<ColorGame />} />
+              <Route path="/tic-tac-toe" element={<TicTacToe />} />
+              <Route path="/movies/add" element={<AddMovie />} />
+              <Route path="/msgtwo" element={<Msgtwo />} />
+              <Route path="/basicform" element={<BasicForm />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </div>
+        </Paper>
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 }
 // export default App; //(default export)
