@@ -6,13 +6,14 @@ import EditIcon from "@mui/icons-material/Edit";
 // import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import { useNavigate } from "react-router-dom";
+import { API } from "./global";
 
 // ------------------------------------Movies---------------------------------
 export function MovieList() {
   let [movies, setMovies] = useState([]);
 
   let getMovies = () => {
-    fetch("https://63d96a8c5a330a6ae17b6bf4.mockapi.io/movie")
+    fetch(`${API}/movies`)
       .then((res) => res.json())
       .then((result) => setMovies(result));
   };
@@ -23,7 +24,7 @@ export function MovieList() {
   // ----------------------------------------------------------------------------------------------
   // promise method
   // let deleteMovie = (id) => {
-  //   fetch(`https://63d96a8c5a330a6ae17b6bf4.mockapi.io/movie/${id}`, {
+  //   fetch(`${API}/movies/${id}`, {
   //     method: "DELETE",
   //   }).then(() => getMovies());
   // };
@@ -32,7 +33,7 @@ export function MovieList() {
 
   // async await method
   let deleteMovie = async (id) => {
-    await fetch(`https://63d96a8c5a330a6ae17b6bf4.mockapi.io/movie/${id}`, {
+    await fetch(`${API}/movies/${id}`, {
       method: "DELETE",
     });
     getMovies();
