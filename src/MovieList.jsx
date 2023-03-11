@@ -45,12 +45,12 @@ export function MovieList() {
         {movies.map((mov) => (
           <Movie
             movie={mov}
-            key={mov.id}
-            id={mov.id}
+            key={mov._id}
+            id={mov._id}
             editButton={
               <IconButton
                 onClick={() => {
-                  navigate(`/movies/edit/${mov.id}`);
+                  navigate(`/movies/edit/${mov._id}`);
                 }}
                 color="secondary"
                 sx={{ marginLeft: "auto" }}
@@ -59,7 +59,7 @@ export function MovieList() {
               </IconButton>
             }
             deleteButton={
-              <IconButton onClick={() => deleteMovie(mov.id)} color="error">
+              <IconButton onClick={() => deleteMovie(mov._id)} color="error">
                 <DeleteIcon />
               </IconButton>
             }
